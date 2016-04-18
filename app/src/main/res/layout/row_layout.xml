@@ -37,7 +37,7 @@
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:layout_toRightOf="@+id/tx_phone"
-        android:id="@+id/tx_office_phone"
+        android:id="@+id/tx_officePhone"
         android:text="Suryansh"
         android:gravity="center"
         android:textAppearance="?android:textAppearanceMedium"

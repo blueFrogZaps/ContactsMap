@@ -24,7 +24,6 @@ public class ContactAdapter  extends ArrayAdapter{
 
     public void add(Contacts object) {
 
-        super.add(object);
         list.add(object);
     }
 
@@ -53,7 +52,7 @@ public class ContactAdapter  extends ArrayAdapter{
             contactHolder.tx_name= (TextView) row.findViewById(R.id.tx_name);
             contactHolder.tx_email= (TextView) row.findViewById(R.id.tx_email);
             contactHolder.tx_phone= (TextView) row.findViewById(R.id.tx_phone);
-            contactHolder.tx_office_phone= (TextView) row.findViewById(R.id.tx_office_phone);
+            contactHolder.tx_officePhone= (TextView) row.findViewById(R.id.tx_officePhone);
             row.setTag(contactHolder);
         }else{
           contactHolder =(ContactHolder)row.getTag();
@@ -62,14 +61,14 @@ public class ContactAdapter  extends ArrayAdapter{
         contactHolder.tx_name.setText(contacts.getName());
         contactHolder.tx_email.setText(contacts.getEmail());
         contactHolder.tx_phone.setText(contacts.getPhone());
-        contactHolder.tx_office_phone.setText(contacts.getOffice_phone());
+        contactHolder.tx_officePhone.setText(contacts.getOfficePhone());
         return row;
 
 
     }
 
     static class ContactHolder{
-        TextView tx_name, tx_email, tx_phone, tx_office_phone;
+        TextView tx_name, tx_email, tx_phone, tx_officePhone;
     }
 }
 

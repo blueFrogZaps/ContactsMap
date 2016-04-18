@@ -27,25 +27,22 @@
         android:layout_below="@+id/bt_get"
         android:layout_centerHorizontal="true" />
 
-    <TextView
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="JSON appears here"
-        android:layout_marginTop="15dp"
-        android:id="@+id/textview"
-        android:layout_below="@+id/bt_parse"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/bt_parse">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textview"
+            android:layout_below="@+id/textview"
+            android:layout_alignRight="@+id/textview"
+            android:layout_alignEnd="@+id/textview"
+            android:layout_marginTop="34dp" />
+        </ScrollView>
 
-    TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/textView"
-        android:layout_below="@+id/textview"
-        android:layout_alignRight="@+id/textview"
-        android:layout_alignEnd="@+id/textview"
-        android:layout_marginTop="34dp" />
+
 
 </RelativeLayout>

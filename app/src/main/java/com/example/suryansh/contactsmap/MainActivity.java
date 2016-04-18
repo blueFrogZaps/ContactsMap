@@ -90,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }else{
             Intent intent = new Intent(this, Display_List.class);
-            intent.putExtra("json_data",json_string);
+            Bundle b = new Bundle();
+            b.putString("json_data",json_string);
+            intent.putExtras(b);
             startActivity(intent);
         }
 

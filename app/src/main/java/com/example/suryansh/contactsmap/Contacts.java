@@ -5,13 +5,13 @@ package com.example.suryansh.contactsmap;
  */
 public class Contacts {
 
-     private String name, email,phone,office_phone;
+     private String name, email,phone,officePhone;
 //create the constructor
-    public Contacts(String name,String email,String phone, String office_phone){
+    public Contacts(String name,String email,String phone, String officePhone){
      this.setName(name);
         this.setEmail(email);
         this.setPhone(phone);
-        this.setOffice_phone(office_phone);
+        this.setOfficePhone(officePhone);
     }
 
     public String getName() {
@@ -44,13 +44,13 @@ public class Contacts {
         this.phone = phone;
     }
 
-    public String getOffice_phone() {
+    public String getOfficePhone() {
 
-        return office_phone;
+        return officePhone;
     }
 
-    public void setOffice_phone(String office_phone) {
+    public void setOfficePhone(String officePhone) {
 
-        this.office_phone = office_phone;
+        this.officePhone = officePhone;
     }
 }
