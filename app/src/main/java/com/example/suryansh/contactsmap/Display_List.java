@@ -1,9 +1,11 @@
 package com.example.suryansh.contactsmap;
 
+import android.content.ContentResolver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,6 +17,8 @@ public class Display_List extends AppCompatActivity {
     JSONArray jsonArray;
     ContactAdapter contactAdapter;
     ListView listView;
+    ContactHelper ch;
+    ContentResolver cr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,8 @@ public class Display_List extends AppCompatActivity {
         listView.setAdapter(contactAdapter);
         Bundle b = getIntent().getExtras();
         json_string = b.getString("json_data");
+        cr = getContentResolver();
+        ch = new ContactHelper();
 
         try {
             jsonArray = new JSONArray(json_string);
@@ -54,6 +60,8 @@ public class Display_List extends AppCompatActivity {
                 else{
                     officePhone = "";
                 }
+
+                Toast.makeText(getApplicationContext(),ch.insertContact(cr,name,phone,email,officePhone),Toast.LENGTH_SHORT).show();
                 Contacts contacts =new Contacts(name, email,phone,officePhone);
                 contactAdapter.add(contacts);
                 count++;
