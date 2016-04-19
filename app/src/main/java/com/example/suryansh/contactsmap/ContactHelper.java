@@ -16,8 +16,7 @@ public class ContactHelper {
 
     }
 
-    public String insertContact(ContentResolver contactAdder,
-                                        String name, String phone, String email, String OfficePhone) {
+    public String insertContact(ContentResolver contactAdder, String name, String phone, String email, String OfficePhone,String addr) {
         ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
         int rawContactInsertIndex = ops.size();
         ops.add(ContentProviderOperation
@@ -62,6 +61,21 @@ public class ContactHelper {
                         OfficePhone)
                 .withValue(ContactsContract.CommonDataKinds.Phone.TYPE,
                         ContactsContract.CommonDataKinds.Phone.TYPE_WORK_MOBILE).build());
+
+        //Address
+        ops.add(ContentProviderOperation
+                .newInsert(ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID,
+                        rawContactInsertIndex)
+
+                .withValue(ContactsContract.Contacts.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE )
+                .withValue(ContactsContract.CommonDataKinds.StructuredPostal.CITY, addr)
+
+
+                .withValue(ContactsContract.Contacts.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE )
+                .withValue(ContactsContract.CommonDataKinds.StructuredPostal.TYPE, "3")
+                .build());
+
 
         try {
             contactAdder.applyBatch(ContactsContract.AUTHORITY, ops);

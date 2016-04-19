@@ -3,6 +3,9 @@ package com.example.suryansh.contactsmap;
 import android.content.ContentResolver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ public class Display_List extends AppCompatActivity {
     ListView listView;
     ContactHelper ch;
     ContentResolver cr;
+    HomeFragment hf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +35,14 @@ public class Display_List extends AppCompatActivity {
         json_string = b.getString("json_data");
         cr = getContentResolver();
         ch = new ContactHelper();
+        hf = new HomeFragment();
 
         try {
             jsonArray = new JSONArray(json_string);
             jsonObject = new JSONObject(jsonArray.get(0).toString());
             jsonArray = jsonObject.getJSONArray("contacts");
             int count = 0;
-            String name, email, phone, officePhone;
+            String name, email, phone, officePhone,latitude,longitude;
 
             while(count < jsonArray.length()){
                 JSONObject jo = jsonArray.getJSONObject(count);
@@ -60,8 +65,12 @@ public class Display_List extends AppCompatActivity {
                 else{
                     officePhone = "";
                 }
+                latitude =  jo.getString("latitude");
+                longitude =  jo.getString("longitude");
 
-                Toast.makeText(getApplicationContext(),ch.insertContact(cr,name,phone,email,officePhone),Toast.LENGTH_SHORT).show();
+                String addr = hf.getAddress(Double.parseDouble(latitude),Double.parseDouble(longitude));
+
+                Toast.makeText(getApplicationContext(),ch.insertContact(cr,name,phone,email,officePhone,addr),Toast.LENGTH_SHORT).show();
                 Contacts contacts =new Contacts(name, email,phone,officePhone);
                 contactAdapter.add(contacts);
                 count++;
@@ -72,4 +81,5 @@ public class Display_List extends AppCompatActivity {
         }
 
     }
+
 }
