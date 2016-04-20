@@ -24,6 +24,7 @@ public class Display_List extends AppCompatActivity {
     ContentResolver cr;
     HomeFragment hf;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +66,12 @@ public class Display_List extends AppCompatActivity {
                 else{
                     officePhone = "";
                 }
-                latitude =  jo.getString("latitude");
-                longitude =  jo.getString("longitude");
+                latitude = (String) jo.getString("latitude");
+                longitude = (String)  jo.getString("longitude");
 
-                String addr = hf.getAddress(Double.parseDouble(latitude),Double.parseDouble(longitude));
+                //String addr = hf.getAddress(Double.parseDouble(latitude),Double.parseDouble(longitude));
 
-                Toast.makeText(getApplicationContext(),ch.insertContact(cr,name,phone,email,officePhone,addr),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),ch.insertContact(cr,name,phone,email,officePhone),Toast.LENGTH_SHORT).show();
                 Contacts contacts =new Contacts(name, email,phone,officePhone);
                 contactAdapter.add(contacts);
                 count++;

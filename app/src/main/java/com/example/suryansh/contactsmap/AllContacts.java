@@ -33,9 +33,10 @@ public class AllContacts extends Fragment {
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+
+    public View onCreate(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_all_contacts, container, false);
         listView = (ListView) view.findViewById(R.id.listview);
         if (!this.json_string.isEmpty()) {
@@ -71,9 +72,9 @@ public class AllContacts extends Fragment {
                     latitude = jo.getString("latitude");
                     longitude = jo.getString("longitude");
 
-                    String addr = hf.getAddress(Double.parseDouble(latitude), Double.parseDouble(longitude));
+                    //String addr = hf.getAddress(Double.parseDouble(latitude), Double.parseDouble(longitude));
 
-                    ch.insertContact(cr, name, phone, email, officePhone, addr);
+                    ch.insertContact(cr, name, phone, email, officePhone);
                     Contacts contacts = new Contacts(name, email, phone, officePhone);
                     contactAdapter.add(contacts);
                     count++;

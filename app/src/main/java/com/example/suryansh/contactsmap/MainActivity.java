@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(context,"Data not fetched properly",Toast.LENGTH_LONG);
             toast.show();
         }else{
-            Intent intent = new Intent(this, TabbedActivity.class);
+            Intent intent = new Intent(this, Display_List.class);
             Bundle b = new Bundle();
             b.putString("json_data",json_string);
             intent.putExtras(b);

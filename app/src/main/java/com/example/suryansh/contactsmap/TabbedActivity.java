@@ -25,19 +25,19 @@ public class TabbedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
         Bundle b = getIntent().getExtras();
-        json_string = b.getString("json_data");
+        //json_string = b.getString("json_data");
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         tabLayout =(TabLayout)findViewById(R.id.tabLayout);
         viewPager = (ViewPager)findViewById(R.id.viewpager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new HomeFragment(),"Home");
-        ac = new AllContacts();
-        if(!json_string.isEmpty()){
+        //ac = new AllContacts();
+        /*if(!json_string.isEmpty()){
             viewPager.setCurrentItem(1);
             ac.json_string = json_string;
         }
-        viewPagerAdapter.addFragments(ac,"AllContacts");
+        viewPagerAdapter.addFragments(ac,"AllContacts");*/
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
